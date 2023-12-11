@@ -893,6 +893,17 @@ class Material:
 
         return fraction
 
+    def get_avg_A(self, lib_manager: LibManager) -> float:
+        """
+        Returns the total material fraction
+        """
+        avg_A = 0
+        for submat in self.submaterials:
+            for zaid in submat.zaidList:
+                avg_A += zaid.fraction*float(lib_manager.XS.awr[zaid.name.split('.')[0]])
+
+        return avg_A/self.get_tot_fraction()
+
     def add_mx(self, mx_cards: list) -> None:
         """
         Add a list of mx_cards to the material
