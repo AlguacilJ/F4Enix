@@ -1002,7 +1002,7 @@ class Fmesh:
         """
         import math
 
-        kdims = self.dims
+        kdims = deepcopy(self.dims)
         pts = vtk.vtkPoints()
         pts.SetDataTypeToFloat()
 
